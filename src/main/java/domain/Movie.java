@@ -1,4 +1,4 @@
-package domain;
+package domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Movie {
         this.price = price;
     }
 
-    void addPlaySchedule(PlaySchedule playSchedule) {
+    public void addPlaySchedule(PlaySchedule playSchedule) {
         playSchedules.add(playSchedule);
     }
 

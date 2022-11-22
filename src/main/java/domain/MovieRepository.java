@@ -1,4 +1,7 @@
-package domain;
+package domain.repository;
+
+import domain.entity.Movie;
+import domain.entity.PlaySchedule;
 
 import java.util.ArrayList;
 import java.util.List;
