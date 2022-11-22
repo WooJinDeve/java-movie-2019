@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static domain.PayGroupAdvanced.*;
+import static domain.PayGroupAdvanced.discountPrice;
+
 public class MovieApplication {
     public static void main(String[] args) {
         List<Movie> movies = MovieRepository.getMovies();
@@ -18,12 +21,45 @@ public class MovieApplication {
             OutputView.printMovies(movies);
             int movieId = InputView.inputMovieId();
             Movie movie = getValidateExistByMovieId(movies, movieId);
+
             BookedMovie bookedMovie = getReserveMovie(movie);
             bookedMovies.add(bookedMovie);
-            isReserveCheck = InputView.intCheckReserve() == 2;
+
+            int reserveNumber = InputView.inputCheckReserve();
+            isReserveCheck = ReserveState.confirmReservation(reserveNumber);
         }
         OutputView.printBookedMovies(bookedMovies);
+
+        int point = InputView.inputPoint();
+        int totalPayment = getTotalPayment(bookedMovies, point);
+
+        int payGroupTypeNum = InputView.inputPayGroup();
+        double finalPaymentAmount = getFinalPaymentAmount(totalPayment, payGroupTypeNum);
+        OutputView.printPaymentAmount(finalPaymentAmount);
     }
+
+    private static int getTotalPayment(List<BookedMovie> bookedMovies, int point) {
+        int totalPayment = bookedMovies.stream()
+                .mapToInt(BookedMovie::getTotalPrice)
+                .sum();
+
+        return validateDiscountPoint(totalPayment, point);
+    }
+
+    private static int validateDiscountPoint(int totalPayment, int point){
+        int discountPointPayment = totalPayment - point;
+        if (totalPayment - point < 0)
+            throw new IllegalArgumentException();
+
+        return discountPointPayment;
+
+    }
+
+    private static double getFinalPaymentAmount(int totalPrice, int payGroupTypeNum) {
+        PayGroupAdvanced payGroupAdvanced = findByPayType(payGroupTypeNum);
+        return discountPrice(payGroupAdvanced, totalPrice);
+    }
+
 
     public static BookedMovie getReserveMovie(Movie movie){
         OutputView.printSchedule(movie);
