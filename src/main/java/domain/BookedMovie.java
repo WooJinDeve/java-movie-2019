@@ -20,4 +20,8 @@ public class BookedMovie {
         this.bookedMovie.movieInformationOutput();
         this.bookedSchedule.scheduleInformationOutput();
     }
+
+    public int getTotalPrice(){
+        return bookedMovie.getPrice() * reservationNumber;
+    }
 }
