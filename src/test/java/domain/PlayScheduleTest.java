@@ -1,5 +1,6 @@
 package domain;
 
+import domain.movie.PlaySchedule;
 import org.junit.Test;
 
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package domain;
+package domain.movie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,5 +41,12 @@ public class MovieRepository {
 
     public static List<Movie> getMovies() {
         return movies;
+    }
+
+    public static Movie getValidateExistByMovieId(int movieId) {
+        return getMovies().stream()
+                .filter(m -> m.hasId(movieId))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }

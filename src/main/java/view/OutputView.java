@@ -1,10 +1,9 @@
 package view;
 
-import domain.BookedMovie;
-import domain.Movie;
-import domain.PlaySchedule;
+import domain.movie.BookedMovie;
+import domain.movie.Movie;
+import domain.movie.PlaySchedule;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class OutputView {

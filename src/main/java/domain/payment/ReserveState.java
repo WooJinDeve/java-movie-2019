@@ -1,4 +1,4 @@
-package domain;
+package domain.payment;
 
 public enum ReserveState {
     DONE_BOOKED(1),

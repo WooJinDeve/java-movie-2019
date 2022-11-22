@@ -1,4 +1,4 @@
-package domain;
+package domain.payment;
 
 import java.util.Arrays;
 

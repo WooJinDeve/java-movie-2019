@@ -1,9 +1,9 @@
-package domain;
+package domain.movie;
 
-import java.time.LocalDateTime;
+import domain.movie.PlaySchedule;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Movie {
     private static final char NEW_LINE = '\n';

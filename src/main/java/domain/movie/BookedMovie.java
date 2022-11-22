@@ -1,4 +1,4 @@
-package domain;
+package domain.movie;
 
 public class BookedMovie {
     Movie bookedMovie;
