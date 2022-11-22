@@ -3,6 +3,7 @@ package domain;
 import java.time.LocalDateTime;
 
 import static utils.DateTimeUtils.format;
+import static utils.DateTimeUtils.isOneHourWithinRange;
 
 public class PlaySchedule {
     private static final int MINIMUM_CAPACITY = 1;
@@ -26,6 +27,8 @@ public class PlaySchedule {
     public PlaySchedule validateTime(LocalDateTime currentTime){
         if (this.startDateTime.isBefore(currentTime))
             throw new IllegalArgumentException("이미 상영 시간이 지난 영화입니다.");
+        else if(isOneHourWithinRange(this.startDateTime, currentTime))
+            throw new IllegalArgumentException("상영 한시간 전에는 영화를 예매할 수 없습니다.");
         return this;
     }
 
@@ -42,5 +45,9 @@ public class PlaySchedule {
 
     public void addCapacity(int capacity){
         this.capacity += capacity;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 }

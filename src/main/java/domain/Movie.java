@@ -28,13 +28,7 @@ public class Movie {
         return playSchedules;
     }
 
-    public PlaySchedule getPaySchedule(int index){
-        return Optional.ofNullable(playSchedules.get(index - 1))
-                .orElseThrow(IllegalArgumentException::new)
-                .validateTime(LocalDateTime.now());
-    }
-
-    void addPlaySchedule(PlaySchedule playSchedule) {
+    public void addPlaySchedule(PlaySchedule playSchedule) {
         playSchedules.add(playSchedule);
     }
 
