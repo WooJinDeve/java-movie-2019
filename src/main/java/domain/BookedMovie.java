@@ -16,7 +16,7 @@ public class BookedMovie {
     }
 
     public void bookedMovieInformationOutput(){
-        System.out.println("예약 번호 : " + reservationNumber);
+        System.out.println("예약 인원 : " + reservationNumber);
         this.bookedMovie.movieInformationOutput();
         this.bookedSchedule.scheduleInformationOutput();
     }

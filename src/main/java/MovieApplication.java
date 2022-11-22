@@ -24,16 +24,18 @@ public class MovieApplication {
 
     public static BookedMovie getReserveMovie(Movie movie){
         PlaySchedule playSchedule = getValidateExistByScheduleIndex(movie);
-        validateInputCapacity(playSchedule);
-        return BookedMovie.of(movie, playSchedule, 0);
+        int capacity = validateInputCapacity(playSchedule);
+        return BookedMovie.of(movie, playSchedule, capacity);
     }
 
-    private static void validateInputCapacity(PlaySchedule paySchedule) {
+    private static int validateInputCapacity(PlaySchedule paySchedule) {
         paySchedule.scheduleInformationOutput();
         int capacity = InputView.inputCapacity();
 
         paySchedule.validateCapacity(capacity);
         paySchedule.minusCapacity(capacity);
+
+        return capacity;
     }
 
 
