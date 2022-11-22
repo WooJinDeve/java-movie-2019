@@ -27,8 +27,7 @@ public class MovieApplication {
         boolean isReserveCheck = true;
         while (isReserveCheck) {
             BookedMovieRunner.runBookedMovie();
-            int reserveNumber = InputView.inputCheckReserve();
-            isReserveCheck = ReserveState.confirmReservation(reserveNumber);
+            isReserveCheck = ReserveState.confirmReservation(InputView.inputCheckReserve());
         }
     }
 }
