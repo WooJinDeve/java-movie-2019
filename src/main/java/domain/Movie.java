@@ -1,7 +1,9 @@
-package domain.entity;
+package domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Movie {
     private static final char NEW_LINE = '\n';
@@ -18,7 +20,21 @@ public class Movie {
         this.price = price;
     }
 
-    public void addPlaySchedule(PlaySchedule playSchedule) {
+    public boolean hasId(int id) {
+        return this.id == id;
+    }
+
+    public List<PlaySchedule> getPlaySchedules() {
+        return playSchedules;
+    }
+
+    public PlaySchedule getPaySchedule(int index){
+        return Optional.ofNullable(playSchedules.get(index - 1))
+                .orElseThrow(IllegalArgumentException::new)
+                .validateTime(LocalDateTime.now());
+    }
+
+    void addPlaySchedule(PlaySchedule playSchedule) {
         playSchedules.add(playSchedule);
     }
 
@@ -30,5 +46,9 @@ public class Movie {
         }
         return id + " - " + name + ", " + price + "원" + NEW_LINE
                 + sb.toString();
+    }
+
+    public void movieInformationOutput(){
+        System.out.println(id + " - " + name + ", " + price + "원");
     }
 }
