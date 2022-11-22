@@ -10,6 +10,9 @@ public class InputView {
     private static final String INPUT_CAPACITY_TEXT = "## 예인 인원을 입력하세요.";
     private static final String INPUT_RESERVE_TEXT = "## 예약 확인 입니다. [ 1: 예약, 2: 추가 예약 ]";
 
+    private static final String INPUT_POINT_TEXT = "## 사용할 포인트를 입력하세요.";
+    private static final String INPUT_PAYGROUP_TEXT = "## 결제 방법을 선택하세요. [ 1: 현금, 2: 카드 ]";
+
     public static int inputMovieId() {
         System.out.println(INPUT_MOVIE_TEXT);
         return getInputInt();
@@ -25,8 +28,18 @@ public class InputView {
         return getInputInt();
     }
 
-    public static int intCheckReserve(){
+    public static int inputCheckReserve(){
         System.out.println(INPUT_RESERVE_TEXT);
+        return getInputInt();
+    }
+
+    public static int inputPoint(){
+        System.out.println(INPUT_POINT_TEXT);
+        return getInputInt();
+    }
+
+    public static int inputPayGroup(){
+        System.out.println(INPUT_PAYGROUP_TEXT);
         return getInputInt();
     }
 

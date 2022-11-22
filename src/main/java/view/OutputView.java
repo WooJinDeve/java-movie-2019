@@ -26,4 +26,8 @@ public class OutputView {
             bookedMovie.bookedMovieInformationOutput();
         }
     }
+
+    public static void printPaymentAmount(double finalPaymentAmount){
+        System.out.println("최종 금액 : " + finalPaymentAmount);
+    }
 }
